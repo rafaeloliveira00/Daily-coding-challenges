@@ -49,7 +49,7 @@ class Solution:
             # extract the units, tens, hundreds, etc...
             # e.g. the unit of the number 807 = 807 / 10**0 % 10
             # the tens = 807 / 10**1 % 10, and so on
-            number = int(total / (10 ** i) % 10)
+            number = int(total // (10 ** i) % 10)
 
             if aux is None:
                 result_list = ListNode(number)
