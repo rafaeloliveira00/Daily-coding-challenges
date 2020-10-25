@@ -1,1 +1,1 @@
-Daily coding challenges by https://www.techseries.dev/daily
+Coding challenges from https://leetcode.com/
