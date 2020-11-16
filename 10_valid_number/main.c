@@ -16,10 +16,7 @@ bool isNumber(char *s) {
     for (int i = 0; s[i] != '\0'; i++) {
         // if the current state is 0 then we just started or only found white spaces so far
         if (s[i] == ' ') {
-            if (current_state == 1) {
-                current_state = SPACE;
-                continue;
-            } else
+            if (current_state == 0)
                 continue;
         }
 
@@ -47,11 +44,14 @@ bool isNumber(char *s) {
                 continue;
             } else if (s[i] == '.' && !got_dot) {
                 current_state = DOT;
-                got_e = true;
+                got_dot = true;
                 continue;
             } else if (s[i] == 'e' && !got_e) {
                 current_state = E;
                 got_e = true;
+                continue;
+            } else if (s[i] == ' ') {
+                current_state = SPACE;
                 continue;
             } else
                 return false;
@@ -65,6 +65,9 @@ bool isNumber(char *s) {
             } else if (s[i] == 'e' && got_numbers) {
                 got_e = true;
                 current_state = E;
+                continue;
+            } else if (s[i] == ' ') {
+                current_state = SPACE;
                 continue;
             } else
                 return false;
@@ -110,6 +113,6 @@ bool isNumber(char *s) {
 }
 
 int main() {
-    printf("%d", isNumber(". 9"));
+    printf("%d", isNumber("656.235e-6123"));
     return 0;
 }
